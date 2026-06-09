@@ -1,36 +1,93 @@
 # LLM Evaluation Analytics Dashboard
 
-A lightweight Streamlit dashboard for exploring synthetic LLM evaluation data across model quality, hallucination patterns, languages, task categories, and annotator consistency.
+> An AI Evaluation Analytics portfolio project that turns structured model evaluation data into quality signals, risk findings, and recommended actions.
 
-## Why This Project
+## Project Overview
 
-LLM evaluation teams need a clear view of where model quality changes and where review effort should be focused. This portfolio project demonstrates how structured AI evaluation data can be transformed into business-friendly quality signals using Python, Pandas, Plotly, and Streamlit.
+This project simulates how an AI Evaluation or Data Quality team can monitor LLM performance across models, languages, task categories, prompt types, and annotators.
+
+The Streamlit dashboard analyzes 1,500 synthetic evaluation records and converts them into:
+
+- Executive quality KPIs
+- Model and segment performance comparisons
+- Hallucination risk signals
+- Annotator consistency metrics
+- Automated business insights and recommended actions
+
+## Business Problem
+
+LLM evaluation programs produce large volumes of annotation and scoring data, but raw records do not directly answer operational questions:
+
+- Which models or task types require investigation?
+- Where is hallucination risk concentrated?
+- Are quality gaps emerging across languages?
+- Is evaluation coverage balanced?
+- Do annotators apply scoring criteria consistently?
+
+Without a structured analytics workflow, teams can miss quality regressions, under-tested segments, and annotation inconsistencies.
+
+## Solution
+
+The dashboard uses Pandas to clean, filter, and aggregate evaluation records, then presents the results through interactive Plotly visualizations and Streamlit metrics.
+
+All analyses respond to date, model, language, category, and prompt-type filters. Rule-based logic transforms the filtered metrics into concise findings and prioritized actions without using LLM APIs.
 
 ## Dashboard Features
 
-- Overview KPIs for evaluation volume, final score, accuracy, safety, and hallucination rate
-- Model performance comparison
-- Language-level quality and coverage analysis
-- Category-level risk and performance signals
-- Annotator workload and score consistency monitoring
-- Shared date, model, language, category, and prompt-type filters
+- **Quality overview:** Evaluation volume, final score, accuracy, safety, and hallucination rate
+- **Automated key insights:** Best and weakest models, risk categories, language gaps, prompt difficulty, and annotator consistency
+- **Recommended actions:** Metric-backed next steps for audits, error analysis, calibration, and coverage expansion
+- **Model analysis:** Quality and hallucination comparisons across four LLMs
+- **Language analysis:** Performance, risk, and evaluation volume by language
+- **Category analysis:** Lowest-performing tasks and hallucination hotspots
+- **Annotator analysis:** Workload and scoring variance monitoring
+- **Interactive filtering:** Every metric, chart, insight, and recommendation updates with the selected evaluation slice
 
-All records are synthetic. The project uses no external APIs, databases, authentication, or paid services.
+## Example Insights
 
-## Project Structure
+Examples generated from the included synthetic dataset:
 
-```text
-llm-evaluation-analytics-dashboard/
-├── app.py
-├── generate_data.py
-├── PRD.md
-├── data/
-│   └── llm_evaluation_data.csv
-├── screenshots/
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
+- GPT leads model performance with a **4.00/5 average final score**.
+- Llama trails the leading model by **0.40 points** and has a **16.4% hallucination rate**.
+- Reasoning is the highest-risk category, with a **17.5% hallucination rate**.
+- Japanese evaluations average **3.70/5**, compared with **3.94/5** for English.
+- Adversarial prompts are the most difficult prompt type, averaging **3.53/5**.
+
+## Example Recommended Actions
+
+- Prioritize hallucination audits for Reasoning tasks.
+- Run targeted error analysis on lower-performing model and category segments.
+- Investigate language-specific quality gaps for Japanese evaluations.
+- Increase evaluation coverage for underrepresented prompt types.
+- Review annotator calibration when score variance exceeds team benchmarks.
+
+## Screenshots
+
+### Dashboard Overview
+
+![LLM Evaluation Analytics Dashboard overview](screenshots/dashboard-overview.png)
+
+### Automated Insights and Recommended Actions
+
+![Automated key insights and recommended actions](screenshots/dashboard-insights-actions.png)
+
+### Annotator Quality Analysis
+
+_Add a screenshot showing workload and scoring consistency._
+
+## Analysis Workflow
+
+1. Generate reproducible synthetic LLM evaluation records.
+2. Load and validate the CSV data with Pandas.
+3. Apply interactive filters to define the analysis scope.
+4. Aggregate quality, hallucination, coverage, and consistency metrics.
+5. Present visual findings and generate rule-based recommendations.
+
+## Tech Stack
+
+**Python · Pandas · NumPy · Plotly · Streamlit · CSV**
+
+No database, backend API, authentication, paid API, or external model service is used.
 
 ## Run Locally
 
@@ -42,28 +99,29 @@ python generate_data.py
 streamlit run app.py
 ```
 
-Open `http://localhost:8501` in a browser.
+Open [http://localhost:8501](http://localhost:8501).
 
-## Dataset
+## Project Structure
 
-`generate_data.py` creates 1,500 reproducible evaluation records with:
+```text
+llm-evaluation-analytics-dashboard/
+├── app.py
+├── generate_data.py
+├── data/llm_evaluation_data.csv
+├── screenshots/
+├── PRD.md
+├── requirements.txt
+└── README.md
+```
 
-- Four models: Gemini, GPT, Claude, and Llama
-- English, Korean, and Japanese evaluations
-- Five evaluation categories and four prompt types
-- Helpfulness, accuracy, safety, hallucination, and final-score metrics
-- Twelve synthetic annotators
+## Future Improvements
 
-The generator includes modest model, language, category, and prompt difficulty effects so the dashboard reveals meaningful patterns rather than uniformly random results.
+- Add time-series trend and regression monitoring
+- Introduce configurable quality thresholds
+- Add inter-annotator agreement metrics
+- Support CSV upload for alternative evaluation datasets
+- Export filtered findings and recommendations as a report
 
-## Portfolio Positioning
+## Portfolio Summary
 
-> Built an LLM evaluation analytics dashboard using Python, Pandas, Plotly, and Streamlit to analyze model quality trends, hallucination patterns, language-level performance, and annotator consistency across synthetic AI evaluation data.
-
-## Tech Stack
-
-- Python
-- Pandas
-- NumPy
-- Plotly
-- Streamlit
+Built an LLM evaluation analytics dashboard that analyzes model quality, hallucination risk, multilingual performance, evaluation coverage, and annotator consistency, then converts those metrics into decision-ready insights and recommended actions.
