@@ -114,14 +114,6 @@ llm-evaluation-analytics-dashboard/
 └── README.md
 ```
 
-## Future Improvements
-
-- Add time-series trend and regression monitoring
-- Introduce configurable quality thresholds
-- Add inter-annotator agreement metrics
-- Support CSV upload for alternative evaluation datasets
-- Export filtered findings and recommendations as a report
-
-## Portfolio Summary
+## Project Summary
 
 Built an LLM evaluation analytics dashboard that analyzes model quality, hallucination risk, multilingual performance, evaluation coverage, and annotator consistency, then converts those metrics into decision-ready insights and recommended actions.
